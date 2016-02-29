@@ -53,14 +53,14 @@ public class DlistImpl<T> implements  Dlist<T> {
 
 
     public void insertAt(int index, T item) throws NullNodeException {
-        DListNode<T> beforeThisNode;
+        DListNode<T> movethisNodeToRight;
         if (index == 0) {
             insertFront(item);
         } else if (index == size) {
             insertEnd(item);
         } else {
-            beforeThisNode = getNodeAt(index);
-            DListNode<T> newNode = new DListNode<T>(item, this, beforeThisNode.getPrevious(), beforeThisNode);
+            movethisNodeToRight = getNodeAt(index);
+            DListNode<T> newNode = new DListNode<T>(item, this, movethisNodeToRight.getPrevious(), movethisNodeToRight);
             syncPrevAndNextNodes(newNode);
             size++;
         }

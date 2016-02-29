@@ -26,31 +26,39 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testCount() throws NullNodeException {
+        dlist.insertEnd("0");
         dlist.insertEnd("1");
         dlist.insertEnd("2");
         dlist.insertEnd("3");
         dlist.insertEnd("4");
         dlist.insertEnd("5");
-        int expected=5;
+        int expected=6;
         int actual=dlist.getSize();
         assertEquals(expected,actual);
     }
 
     @Test
     public void testRemoveFirst() throws NullNodeException {
+        dlist.insertEnd("0");
         dlist.insertEnd("1");
         dlist.insertEnd("2");
         dlist.insertEnd("3");
         dlist.insertEnd("4");
         dlist.insertEnd("5");
         dlist.removeFirst();
-        String expected="2";
+        String expected="1";
         String actual=dlist.front().toString();
         assertEquals(expected, actual);
+
+        int actualSize=dlist.getSize();
+        int expectedSize=5;
+
+        assertEquals("size corrupted in removeFirst operation",expectedSize, actualSize);
     }
 
     @Test
     public void testRemoveLast() throws NullNodeException {
+        dlist.insertEnd("0");
         dlist.insertEnd("1");
         dlist.insertEnd("2");
         dlist.insertEnd("3");
@@ -60,6 +68,11 @@ public class DoublyLinkedListTest {
         String expected="4";
         String actual=dlist.back().toString();
         assertEquals(expected, actual);
+
+        int actualSize=dlist.getSize();
+        int expectedSize=5;
+
+        assertEquals("size corrupted in removeLast operation",expectedSize, actualSize);
     }
 
     @Test
@@ -81,42 +94,51 @@ public class DoublyLinkedListTest {
 
     @Test
     public void testInsertAt() throws NullNodeException {
+        dlist.insertEnd("0");
         dlist.insertEnd("1");
         dlist.insertEnd("2");
         dlist.insertEnd("3");
         dlist.insertEnd("5");
 
-        dlist.insertAt(3, "4");
+        dlist.insertAt(4, "4");
 
         String expected="4";
-        String actual=dlist.get(3).toString();
+        String actual=dlist.get(4).toString();
         assertEquals(expected, actual);
+
+        int actualSize=dlist.getSize();
+        int expectedSize=6;
+
+        assertEquals("size corrupted in insertAt operation",expectedSize, actualSize);
 
     }
 
     @Test
     public void testRemoveAt() throws NullNodeException {
+        dlist.insertEnd("0");
         dlist.insertEnd("1");
         dlist.insertEnd("2");
         dlist.insertEnd("3");
         dlist.insertEnd("4");
 
-        dlist.removeAt(2);
+        dlist.removeAt(3);
 
+        String actual=dlist.get(3).toString();
         String expected="4";
-        String actual=dlist.get(2).toString();
+
         assertEquals(expected, actual);
 
     }
 
     @Test
     public void testIterator() throws NullNodeException {
+        dlist.insertEnd("0");
         dlist.insertEnd("1");
         dlist.insertEnd("2");
         dlist.insertEnd("3");
         dlist.insertEnd("4");
 
-        String[] s=new String[]{"1","2","3","4"};
+        String[] s=new String[]{"0","1","2","3","4"};
         int stringNum=0;
 
         for(Object d:dlist)
@@ -126,6 +148,14 @@ public class DoublyLinkedListTest {
             assertEquals(expected, actual);
             stringNum++;
         }
+    }
+
+    @Test(expected =NullNodeException.class)
+    public void insertAtWrongPositionThrowsError() throws NullNodeException {
+
+        dlist.insertAt(0,"0");
+        dlist.insertAt(1,"1");
+        dlist.insertAt(4,"4");
     }
 
 
