@@ -47,6 +47,7 @@ public class Tree<K extends Comparable, V> {
                    return;
                }
                insert(node.getLeftChild(i),item);
+               return;
            }
            else if(currentNodeKey.compareTo(insertItemKey)<0  && i==node.items.size()-1)
            {
@@ -57,6 +58,7 @@ public class Tree<K extends Comparable, V> {
                    return;
                }
                insert(node.getRightChild(i),item);
+               return;
            }
 
        }
