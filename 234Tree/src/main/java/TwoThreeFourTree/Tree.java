@@ -23,51 +23,41 @@ public class Tree<K extends Comparable, V> {
     }
 
     private void insert(TreeNode<K, V> node, Item<K, V> item) throws Exception {
-        if( node.childNodes.size()==0 && node.items.size()<3)
-        {
+        if (node.childNodes.size() == 0 && node.items.size() < 3) {
             insertIntoLeaf(item, node);
             return;
         }
         node = checkForThreeKeyNode(node);
-       for(int i=0;i<node.items.size();i++)
-       {
-           K currentNodeKey=node.items.get(i).key;
-           K insertItemKey=item.key;
+        for (int i = 0; i < node.items.size(); i++) {
+            K currentNodeKey = node.items.get(i).key;
+            K insertItemKey = item.key;
 
-           if(currentNodeKey.compareTo(insertItemKey)==0)
-           {
-               return;//don't insert duplicates
-           }
-           else if(currentNodeKey.compareTo(insertItemKey)>0)
-           {
-               TreeNode<K, V> leftChild=node.getLeftChild(i);
-               if(leftChild==null)
-               {
-                   node.setLeftChild(i,item);
-                   return;
-               }
-               insert(node.getLeftChild(i),item);
-               return;
-           }
-           else if(currentNodeKey.compareTo(insertItemKey)<0  && i==node.items.size()-1)
-           {
-               TreeNode<K, V> rightChild=node.getRightChild(i);
-               if(rightChild==null)
-               {
-                   node.setRightChild(i,item);
-                   return;
-               }
-               insert(node.getRightChild(i),item);
-               return;
-           }
+            if (currentNodeKey.compareTo(insertItemKey) == 0) {
+                return;//don't insert duplicates
+            } else if (currentNodeKey.compareTo(insertItemKey) > 0) {
+                TreeNode<K, V> leftChild = node.getLeftChild(i);
+                if (leftChild == null) {
+                    node.setLeftChild(i, item);
+                    return;
+                }
+                insert(node.getLeftChild(i), item);
+                return;
+            } else if (currentNodeKey.compareTo(insertItemKey) < 0 && i == node.items.size() - 1) {
+                TreeNode<K, V> rightChild = node.getRightChild(i);
+                if (rightChild == null) {
+                    node.setRightChild(i, item);
+                    return;
+                }
+                insert(node.getRightChild(i), item);
+                return;
+            }
 
-       }
+        }
 
 
     }
 
-    private void insertIntoLeaf(Item<K, V> item, TreeNode<K, V> leafNode )
-    {
+    private void insertIntoLeaf(Item<K, V> item, TreeNode<K, V> leafNode) {
         leafNode.items.add(item);
         Collections.sort(leafNode.items);
     }
@@ -143,7 +133,9 @@ public class Tree<K extends Comparable, V> {
             TreeNode<K, V> rightNode = new TreeNode<K, V>(null, head.items.get(2));
 
             setLeftChildParent(leftNode, newParent, 0);
-            setRightChildParent(rightNode, newParent,  1);
+            setRightChildParent(rightNode, newParent, 1);
+
+            resetChildrenOfSplitNode(leftNode, rightNode, head);
             head = newParent;
             return head;
         } else {
@@ -152,49 +144,50 @@ public class Tree<K extends Comparable, V> {
     }
 
     private TreeNode<K, V> kickMiddleItemUpStairs(TreeNode<K, V> nodeToSplit) throws Exception {
+
         TreeNode<K, V> parentNode = nodeToSplit.parent;
 
         Item<K, V> middleItem = nodeToSplit.items.get(1);
         int childIndex = getChildNodeIndexNum(nodeToSplit);
         parentNode.items.add(childIndex, middleItem);
-        splitNode(nodeToSplit, parentNode, childIndex);
+        TreeNode<K, V> leftNode = new TreeNode<K, V>(null, nodeToSplit.items.get(0));
+        TreeNode<K, V> rightNode = new TreeNode<K, V>(null, nodeToSplit.items.get(2));
+        resetChildrenOfSplitNode(leftNode,rightNode,nodeToSplit);
+        parentNode.childNodes.remove(childIndex);
+        setLeftChildParent(leftNode, parentNode, childIndex);
+        setRightChildParent(rightNode, parentNode, childIndex + 1);
 
         return parentNode;
     }
 
-    private void splitNode(TreeNode<K, V> nodeBeingSplit, TreeNode<K, V> newParentOfSplitNode,int chldIdxBeingEliminated) throws Exception {
-        TreeNode<K, V> leftNode = new TreeNode<K, V>(null, nodeBeingSplit.items.get(0));
-        TreeNode<K, V> rightNode = new TreeNode<K, V>(null, nodeBeingSplit.items.get(2));
+    private void resetChildrenOfSplitNode(TreeNode<K, V> leftNode,TreeNode<K, V> rightNode,TreeNode<K, V> nodeBeingSplit) throws Exception {
 
         if (nodeBeingSplit.childNodes.size() > 0) {
             leftNode.childNodes.add(0, nodeBeingSplit.childNodes.get(0));
-            nodeBeingSplit.childNodes.get(0).parent=leftNode;
+            nodeBeingSplit.childNodes.get(0).parent = leftNode;
             leftNode.childNodes.add(1, nodeBeingSplit.childNodes.get(1));
-            nodeBeingSplit.childNodes.get(1).parent=leftNode;
-            rightNode.childNodes.add(0, nodeBeingSplit.childNodes.get(3));
-            nodeBeingSplit.childNodes.get(3).parent =rightNode;
-            rightNode.childNodes.add(1, nodeBeingSplit.childNodes.get(4));
-            nodeBeingSplit.childNodes.get(4).parent=rightNode;
+            nodeBeingSplit.childNodes.get(1).parent = leftNode;
+
+            rightNode.childNodes.add(0, nodeBeingSplit.childNodes.get(2));
+            nodeBeingSplit.childNodes.get(2).parent = rightNode;
+            rightNode.childNodes.add(1, nodeBeingSplit.childNodes.get(3));
+            nodeBeingSplit.childNodes.get(3).parent = rightNode;
         }
-        newParentOfSplitNode.childNodes.remove(chldIdxBeingEliminated);
-        setLeftChildParent(leftNode, newParentOfSplitNode, chldIdxBeingEliminated);
-        setRightChildParent(rightNode,newParentOfSplitNode,chldIdxBeingEliminated+1);
+
 
     }
 
     //Set left child's parent after node split
-    private void setLeftChildParent(TreeNode<K, V> leftChild,TreeNode<K, V> parent, int childIndexBeingAdded)
-    {
+    private void setLeftChildParent(TreeNode<K, V> leftChild, TreeNode<K, V> parent, int childIndexBeingAdded) {
         leftChild.parent = parent;
 
-        parent.childNodes.add(childIndexBeingAdded,leftChild);
+        parent.childNodes.add(childIndexBeingAdded, leftChild);
     }
 
     //Set right child's parent after node split
-    private void setRightChildParent(TreeNode<K, V> rightChild,TreeNode<K, V> parent,int childIndexBeingAdded)
-    {
+    private void setRightChildParent(TreeNode<K, V> rightChild, TreeNode<K, V> parent, int childIndexBeingAdded) {
         rightChild.parent = parent;
-        parent.childNodes.add(childIndexBeingAdded,rightChild);
+        parent.childNodes.add(childIndexBeingAdded, rightChild);
     }
 
     public Item<K, V> search(K key) {
@@ -225,7 +218,6 @@ public class Tree<K extends Comparable, V> {
     private TreeNode<K, V> getRightChildFromItem(Item<K, V> item) {
         return null;
     }
-
 
 
 }

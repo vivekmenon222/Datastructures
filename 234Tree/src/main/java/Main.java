@@ -15,6 +15,11 @@ public class Main {
         tree.insert(new Item<Integer, String>(14,"fourteen"));
         tree.insert(new Item<Integer, String>(32,"thirty two"));
         tree.insert(new Item<Integer, String>(43,"forty three"));
-        tree.insert(new Item<Integer, String>(9,"nine"));
+        tree.insert(new Item<Integer, String>(1,"one"));
+        tree.insert(new Item<Integer, String>(2,"two"));
+        tree.insert(new Item<Integer, String>(3,"three"));
+        tree.insert(new Item<Integer, String>(4,"four"));
+        tree.insert(new Item<Integer, String>(5,"five"));
+        tree.insert(new Item<Integer, String>(6,"six"));
     }
 }
