@@ -21,5 +21,6 @@ public class Main {
         tree.insert(new Item<Integer, String>(4,"four"));
         tree.insert(new Item<Integer, String>(5,"five"));
         tree.insert(new Item<Integer, String>(6,"six"));
+        tree.printSorted();
     }
 }

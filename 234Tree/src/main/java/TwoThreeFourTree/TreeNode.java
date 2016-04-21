@@ -11,6 +11,7 @@ public class TreeNode<K extends Comparable, V> {
     TreeNode parent;
     List<Item<K, V>> items;
     List<TreeNode<K,V>> childNodes;
+    private int inOrderTravItemIndex=0;
 
     public TreeNode(TreeNode<K, V> parent, Item<K, V> item) throws Exception {
         this.parent=parent;
@@ -19,11 +20,26 @@ public class TreeNode<K extends Comparable, V> {
         items.add(item);
     }
 
-
-    private void inOrder(K key)
+    private void visit(int itemIndex)
     {
+        System.out.println(String.format("key:%s value:%s", this.items.get(itemIndex).key.toString(), this.items.get(itemIndex).value.toString()));
+    }
 
 
+    public void inorder() {
+        if (getLeftChild(inOrderTravItemIndex) != null) {
+            getLeftChild(inOrderTravItemIndex).inorder();
+        }
+        this.visit(inOrderTravItemIndex);
+        if (getRightChild(inOrderTravItemIndex) != null) {
+            getRightChild(inOrderTravItemIndex).inorder();
+        }
+
+        if(getNextSibling() !=null)
+        {
+            inOrderTravItemIndex++;
+            inorder();
+        }
     }
 
     TreeNode<K, V> getLeftChild(int itemPosition )
@@ -70,6 +86,22 @@ public class TreeNode<K extends Comparable, V> {
         if(this.childNodes.size()>0)
         {
             return this.childNodes.get(itemPosition+1);
+        }
+        else
+        {
+            return null;
+        }
+
+
+    }
+
+    Item<K,V>  getNextSibling()
+    {
+
+        if(this.items.size()>(inOrderTravItemIndex+1))
+        {
+
+            return this.items.get(inOrderTravItemIndex +1);
         }
         else
         {

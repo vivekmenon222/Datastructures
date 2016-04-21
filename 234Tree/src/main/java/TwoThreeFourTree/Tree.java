@@ -22,6 +22,11 @@ public class Tree<K extends Comparable, V> {
 
     }
 
+    public void printSorted()
+    {
+        head.inorder();
+    }
+
     private void insert(TreeNode<K, V> node, Item<K, V> item) throws Exception {
         if (node.childNodes.size() == 0 && node.items.size() < 3) {
             insertIntoLeaf(item, node);
@@ -218,6 +223,8 @@ public class Tree<K extends Comparable, V> {
     private TreeNode<K, V> getRightChildFromItem(Item<K, V> item) {
         return null;
     }
+
+
 
 
 }
