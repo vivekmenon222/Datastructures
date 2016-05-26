@@ -29,8 +29,17 @@ public class Tree<K extends Comparable, V> {
     }
 
     //Recursive calls to this method until you reach a leaf node
+    //Inserts always happen in a leaf node
     private void insert(TreeNode<K, V> node, Item<K, V> item) throws Exception {
         if (node.childNodes.size() == 0 && node.items.size() < 3) {
+           for(Item<K, V> kvItem : node.items)
+           {
+               if(kvItem.key.compareTo(item.key)==0)
+               {
+                   System.out.println("Key " +item.key+" already exists. Duplicate keys are ignored");
+                   return;
+               }
+           }
             insertIntoLeaf(item, node);
             return;
         }
@@ -70,7 +79,6 @@ public class Tree<K extends Comparable, V> {
         leafNode.items.add(item);
         Collections.sort(leafNode.items);
     }
-
 
     private TreeNode<K, V> checkForThreeKeyNode(TreeNode<K, V> node) throws Exception {
         TreeNode<K, V> returnNode = node;
