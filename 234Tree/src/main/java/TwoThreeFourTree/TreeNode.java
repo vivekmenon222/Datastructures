@@ -11,7 +11,6 @@ public class TreeNode<K extends Comparable, V> {
     TreeNode parent;
     List<Item<K, V>> items;
     List<TreeNode<K,V>> childNodes;
-    private int inOrderTravItemIndex=0;
 
     public TreeNode(TreeNode<K, V> parent, Item<K, V> item) throws Exception {
         this.parent=parent;
@@ -26,27 +25,30 @@ public class TreeNode<K extends Comparable, V> {
     }
 
 
-    public void inorder() {
-        if (getLeftChild(inOrderTravItemIndex) != null) {
-            getLeftChild(inOrderTravItemIndex).inorder();
+    public void inorder(int itemIndex) {
+
+        if (itemIndex==0 && getLeftChildNodeForItem(itemIndex) != null) {
+            TreeNode<K,V> leftChild=getLeftChildNodeForItem(itemIndex);
+            leftChild.inorder(0);
         }
-        this.visit(inOrderTravItemIndex);
-        if (getRightChild(inOrderTravItemIndex) != null) {
-            getRightChild(inOrderTravItemIndex).inorder();
+        this.visit(itemIndex);
+        if (getRightChildNodeForItem(itemIndex) != null) {
+            TreeNode<K,V> rightChild=getRightChildNodeForItem(itemIndex);
+            rightChild.inorder(0);
         }
 
-        if(getNextSibling() !=null)
+        if(getNextSibling(itemIndex) !=null)
         {
-            inOrderTravItemIndex++;
-            inorder();
+            itemIndex++;
+            inorder(itemIndex);
         }
     }
 
-    TreeNode<K, V> getLeftChild(int itemPosition )
+    TreeNode<K, V> getLeftChildNodeForItem(int itemIndex)
     {
         if(this.childNodes.size()>0)
         {
-            return this.childNodes.get(itemPosition);
+            return this.childNodes.get(itemIndex);
         }
         else
         {
@@ -56,11 +58,11 @@ public class TreeNode<K extends Comparable, V> {
 
     }
 
-    void setLeftChild(int itemPosition,Item<K, V> item) throws Exception {
+    void setLeftChildNodeForItem(int itemPosition, Item<K, V> item) throws Exception {
 
-        if(this.getLeftChild(itemPosition)!=null)
+        if(this.getLeftChildNodeForItem(itemPosition)!=null)
         {
-          throw new Exception(String.format("%s already has a left child",this.items.get(itemPosition).key));
+            throw new Exception(String.format("%s already has a left child",this.items.get(itemPosition).key));
         }
         else
         {
@@ -68,9 +70,9 @@ public class TreeNode<K extends Comparable, V> {
         }
     }
 
-    void setRightChild(int itemPosition,Item<K, V> item) throws Exception {
+    void setRightChildNodeForItem(int itemPosition, Item<K, V> item) throws Exception {
 
-        if(this.getRightChild(itemPosition)!=null)
+        if(this.getRightChildNodeForItem(itemPosition)!=null)
         {
             throw new Exception(String.format("%s already has a right child",this.items.get(itemPosition).key));
         }
@@ -81,7 +83,7 @@ public class TreeNode<K extends Comparable, V> {
     }
 
 
-    TreeNode<K, V> getRightChild(int itemPosition )
+    TreeNode<K, V> getRightChildNodeForItem(int itemPosition)
     {
         if(this.childNodes.size()>0)
         {
@@ -95,13 +97,13 @@ public class TreeNode<K extends Comparable, V> {
 
     }
 
-    Item<K,V>  getNextSibling()
+    Item<K,V>  getNextSibling(int itemIndex)
     {
 
-        if(this.items.size()>(inOrderTravItemIndex+1))
+        if(this.items.size()>(itemIndex+1))
         {
 
-            return this.items.get(inOrderTravItemIndex +1);
+            return this.items.get(itemIndex +1);
         }
         else
         {

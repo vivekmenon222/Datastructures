@@ -24,7 +24,8 @@ public class Tree<K extends Comparable, V> {
 
     public void printSorted()
     {
-        head.inorder();
+        int inOrderTravItemIndex=0;
+        head.inorder(inOrderTravItemIndex);
     }
 
     //Recursive calls to this method until you reach a leaf node
@@ -42,21 +43,21 @@ public class Tree<K extends Comparable, V> {
                 return;//don't insert duplicates
             } else if (currentNodeKey.compareTo(insertItemKey) > 0) {
                 //new item is less than current node. Go left
-                TreeNode<K, V> leftChild = node.getLeftChild(i);
+                TreeNode<K, V> leftChild = node.getLeftChildNodeForItem(i);
                 if (leftChild == null) {
-                    node.setLeftChild(i, item);
+                    node.setLeftChildNodeForItem(i, item);
                     return;
                 }
-                insert(node.getLeftChild(i), item);
+                insert(node.getLeftChildNodeForItem(i), item);
                 return;
             } else if (currentNodeKey.compareTo(insertItemKey) < 0 && i == node.items.size() - 1) {
                 //new item is greater than current node. Go right
-                TreeNode<K, V> rightChild = node.getRightChild(i);
+                TreeNode<K, V> rightChild = node.getRightChildNodeForItem(i);
                 if (rightChild == null) {
-                    node.setRightChild(i, item);
+                    node.setRightChildNodeForItem(i, item);
                     return;
                 }
-                insert(node.getRightChild(i), item);
+                insert(node.getRightChildNodeForItem(i), item);
                 return;
             }
 
