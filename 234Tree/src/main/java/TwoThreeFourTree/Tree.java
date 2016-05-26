@@ -27,6 +27,7 @@ public class Tree<K extends Comparable, V> {
         head.inorder();
     }
 
+    //Recursive calls to this method until you reach a leaf node
     private void insert(TreeNode<K, V> node, Item<K, V> item) throws Exception {
         if (node.childNodes.size() == 0 && node.items.size() < 3) {
             insertIntoLeaf(item, node);
@@ -40,6 +41,7 @@ public class Tree<K extends Comparable, V> {
             if (currentNodeKey.compareTo(insertItemKey) == 0) {
                 return;//don't insert duplicates
             } else if (currentNodeKey.compareTo(insertItemKey) > 0) {
+                //new item is less than current node. Go left
                 TreeNode<K, V> leftChild = node.getLeftChild(i);
                 if (leftChild == null) {
                     node.setLeftChild(i, item);
@@ -48,6 +50,7 @@ public class Tree<K extends Comparable, V> {
                 insert(node.getLeftChild(i), item);
                 return;
             } else if (currentNodeKey.compareTo(insertItemKey) < 0 && i == node.items.size() - 1) {
+                //new item is greater than current node. Go right
                 TreeNode<K, V> rightChild = node.getRightChild(i);
                 if (rightChild == null) {
                     node.setRightChild(i, item);
