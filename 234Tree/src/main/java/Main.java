@@ -26,6 +26,9 @@ public class Main {
         tree.insert(new Item<Integer, String>(4,"four"));
         tree.insert(new Item<Integer, String>(5,"five"));
         tree.insert(new Item<Integer, String>(6,"six"));
+        tree.insert(new Item<Integer, String>(66,"sixty six"));
+        tree.insert(new Item<Integer, String>(-14,"minus 14"));
+        tree.insert(new Item<Integer, String>(206,"two hundred six"));
         tree.printSorted();
     }
 }

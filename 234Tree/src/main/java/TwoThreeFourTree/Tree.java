@@ -49,6 +49,7 @@ public class Tree<K extends Comparable, V> {
             K insertItemKey = item.key;
 
             if (currentNodeKey.compareTo(insertItemKey) == 0) {
+                System.out.println("Key " +item.key+" already exists. Duplicate keys are ignored");
                 return;//don't insert duplicates
             } else if (currentNodeKey.compareTo(insertItemKey) > 0) {
                 //new item is less than current node. Go left
