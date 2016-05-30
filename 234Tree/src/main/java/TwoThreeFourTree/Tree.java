@@ -18,15 +18,9 @@ public class Tree<K extends Comparable, V> {
       }
    }
 
-   public void remove(K key) {
+   public void remove(K key) throws Exception {
 
-      Item<K, V> foundItem = findKeyInNode(head, key);
-      if (foundItem != null) {
-         //Item to be removed found in head
-      } else {
-         //Do a recursive search for the item
-         remove(head, key);
-      }
+      remove(head, key);
    }
 
    public void printSorted() {
@@ -53,17 +47,61 @@ public class Tree<K extends Comparable, V> {
       if (nextNode == node) {
          System.out.println("Key " + item.key + " already exists. Duplicate keys are ignored");
          return;//don't insert duplicates
-      } else if (nextNode.items.size() == 0) {
+      }
+   /*   else if (nextNode.items.size() == 0) {
          nextNode.items.add(item);
          return;
-      } else {
+      } */
+      else {
          insert(nextNode, item);
-         return;
       }
    }
 
-   private void remove(TreeNode<K, V> node, K key) {
+   private void remove(TreeNode<K, V> node, K key) throws Exception {
 
+      if (node != head) {
+         checkForOneKeyNode(node);
+      }
+
+      Item<K, V> foundItem = findKeyInNode(node, key);
+      if (foundItem != null) {
+         //Item to be removed found
+         int foundItemIndex = head.items.indexOf(foundItem);
+         TreeNode<K, V> leftMostNode = findLeftMostNodeForRemoveOperation(head.getRightChildNodeForItem(foundItemIndex));
+      } else {
+         //Do a recursive search for the item
+         TreeNode<K, V> nextNodeInSearch = getNextNodeInSearch(node, key);
+         remove(nextNodeInSearch, key);
+      }
+   }
+
+   private void checkForOneKeyNode(TreeNode<K, V> node) throws Exception {
+      TreeNode<K, V> leftSiblingNode = node.getLeftAdjacentNode();
+      TreeNode<K, V> rightSiblingNode = node.getRightAdjacentNode();
+      if (leftSiblingNode!=null && leftSiblingNode.items.size() > 1) {
+          //steal from left sibling via rotation
+      } else if (rightSiblingNode!=null && rightSiblingNode.items.size() > 1) {
+         //steal from right sibling via rotation
+      } else if (node.parent.items.size() > 1) {
+         //steal from parent
+      }
+      else if(node.parent==head)
+      {
+         //fuse with parent ie head
+      }
+      else
+      {
+         throw new Exception("Unknown checkForOneKeyNode condition");
+      }
+   }
+
+   private TreeNode<K, V> findLeftMostNodeForRemoveOperation(TreeNode<K, V> node) {
+      TreeNode<K, V> leftNode = node.getLeftChildNodeForItem(0);
+      if (leftNode != null) {
+         return findLeftMostNodeForRemoveOperation(leftNode);
+      } else {
+         return node;
+      }
    }
 
    private void insertIntoLeaf(Item<K, V> item, TreeNode<K, V> leafNode) {
@@ -205,16 +243,16 @@ public class Tree<K extends Comparable, V> {
          } else if (currentItemKey.compareTo(key) > 0) {
             //current item is greater than the key, go left
             TreeNode<K, V> leftNode = currentNode.getLeftChildNodeForItem(itemIdex);
-            if (leftNode == null) {
+         /*   if (leftNode == null) {
                leftNode = currentNode.setLeftChildNodeForItem(itemIdex, null);
-            }
+            }*/
             return leftNode;
          } else if (itemIdex == (currentNode.items.size() - 1) && currentItemKey.compareTo(key) < 0) {
             //you are at the last item in the list and the current item is less than the key. Go right
             TreeNode<K, V> rightNode = currentNode.getRightChildNodeForItem(itemIdex);
-            if (rightNode == null) {
+           /* if (rightNode == null) {
                rightNode = currentNode.setRightChildNodeForItem(itemIdex, null);
-            }
+            }*/
             return rightNode;
          }
          itemIdex++;
