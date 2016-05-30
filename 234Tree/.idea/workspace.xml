@@ -30,22 +30,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.79036146">
-              <caret line="30" column="66" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+            <state vertical-scroll-proportion="-18.64">
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TreeNode.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TreeNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/TwoThreeFourTree/TreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.6529517">
+              <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+              <folding>
+                <element signature="e#1749#1755#0" expanded="true" />
+                <element signature="e#2212#2218#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,19 +56,17 @@
       <file leaf-file-name="Tree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/TwoThreeFourTree/Tree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.52">
-              <caret line="47" column="53" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
+            <state vertical-scroll-proportion="-9.441176">
+              <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
               <folding>
                 <element signature="docComment;class#Tree#0" expanded="false" />
-                <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-                <element signature="method#find#0;class#Tree#0" expanded="false" />
-                <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-                <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-                <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+                <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
                 <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
                 <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
                 <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
                 <element signature="method#search#0;class#Tree#0" expanded="false" />
+                <element signature="e#5838#5839#0" expanded="true" />
+                <element signature="e#5862#5863#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,10 +77,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#358#359#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,10 +134,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1942" />
-    <option name="height" value="1042" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1112" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -677,16 +675,16 @@
       <workItem from="1461452820803" duration="656000" />
       <workItem from="1464178176706" duration="3450000" />
       <workItem from="1464263955460" duration="7235000" />
-      <workItem from="1464555531206" duration="189000" />
+      <workItem from="1464555531206" duration="8863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83910000" />
+    <option name="totallyTimeSpent" value="92584000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="0" />
-    <editor active="false" />
+    <frame x="-9" y="-9" width="1938" height="1112" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -696,17 +694,17 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5450237" sideWeight="0.66272825" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4544406" sideWeight="0.5469584" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33191034" sideWeight="0.5593583" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3587082" sideWeight="0.5133405" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35859126" sideWeight="0.5005348" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2145144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4544406" sideWeight="0.4530416" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21497326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33191034" sideWeight="0.4406417" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -728,44 +726,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>17</line>
-          <properties />
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>18</line>
-          <properties />
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>19</line>
-          <properties />
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/TwoThreeFourTree/Tree.java</url>
-          <line>80</line>
-          <properties />
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -796,7 +756,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -806,15 +769,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -823,10 +784,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -844,15 +802,13 @@
           <caret line="52" column="65" selection-start-line="52" selection-start-column="65" selection-end-line="52" selection-end-column="65" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -861,7 +817,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -879,15 +838,13 @@
           <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -896,7 +853,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -914,15 +874,13 @@
           <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -931,7 +889,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -949,15 +910,13 @@
           <caret line="195" column="22" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="22" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -966,7 +925,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -984,15 +946,13 @@
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1001,7 +961,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,7 +972,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,10 +991,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="10" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="10" />
-          <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,15 +1001,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1055,7 +1016,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,10 +1035,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="10" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="10" />
-          <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1084,15 +1045,13 @@
           <caret line="41" column="9" selection-start-line="35" selection-start-column="6" selection-end-line="41" selection-end-column="9" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1109,7 +1068,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1117,10 +1079,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1143,45 +1102,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TwoThreeFourTree/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.52">
-          <caret line="47" column="53" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
+        <state vertical-scroll-proportion="-9.441176">
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
           <folding>
             <element signature="docComment;class#Tree#0" expanded="false" />
-            <element signature="method#getChildNodeIndexNum#0;class#Tree#0" expanded="false" />
-            <element signature="method#find#0;class#Tree#0" expanded="false" />
-            <element signature="method#findItemByKey#0;class#Tree#0" expanded="false" />
-            <element signature="method#splitThreeKeyHeadNode#0;class#Tree#0" expanded="false" />
-            <element signature="method#kickMiddleItemUpStairs#0;class#Tree#0" expanded="false" />
+            <element signature="method#checkForThreeKeyNode#0;class#Tree#0" expanded="false" />
             <element signature="method#resetChildrenOfSplitNode#0;class#Tree#0" expanded="false" />
             <element signature="method#setLeftChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#setRightChildParent#0;class#Tree#0" expanded="false" />
             <element signature="method#search#0;class#Tree#0" expanded="false" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5862#5863#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TwoThreeFourTree/TreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79036146">
-          <caret line="30" column="66" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+        <state vertical-scroll-proportion="-18.64">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TwoThreeFourTree/TreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6529517">
+          <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+          <folding>
+            <element signature="e#1749#1755#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
