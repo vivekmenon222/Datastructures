@@ -62,7 +62,7 @@ public class Tree<K extends Comparable, V> {
 
       if (node != head) {
          if (node.items.size() == 1) {
-            node = FixOneKeyNode(node);
+            node = FixOneKeyNode(node, true);
          }
       }
 
@@ -72,7 +72,15 @@ public class Tree<K extends Comparable, V> {
          int foundItemIndex = node.items.indexOf(foundItem);
          TreeNode<K, V> rightChild = node.getRightChildNodeForItem(foundItemIndex);
          TreeNode<K, V> leftMostNode = findLeftMostNodeForRemoveOperation(rightChild);
-         Item<K,V> replacementItem=leftMostNode.items.remove(0);
+         for (Item<K, V> item : leftMostNode.items) {
+            //After rotation the key to be removed might end up in leaf node
+            //This is to account for that
+            if (item.key == key) {
+               leftMostNode.items.remove(item);
+               return;
+            }
+         }
+         Item<K, V> replacementItem = leftMostNode.items.remove(0);
          node.items.remove(foundItemIndex);
          node.items.add(foundItemIndex, replacementItem);
       } else {
@@ -82,11 +90,16 @@ public class Tree<K extends Comparable, V> {
       }
    }
 
-   private TreeNode<K, V> FixOneKeyNode(TreeNode<K, V> node) throws Exception {
-      TreeNode<K, V> returnNode = node;
+   private TreeNode<K, V> FixOneKeyNode(TreeNode<K, V> node, boolean returnParent) throws Exception {
+      TreeNode<K, V> returnNode;
       TreeNode<K, V> leftSiblingNode = node.getLeftAdjacentNode();
       TreeNode<K, V> rightSiblingNode = node.getRightAdjacentNode();
       TreeNode<K, V> parentNode = node.parent;
+      if (returnParent) {
+         returnNode = parentNode;
+      } else {
+         returnNode = node;
+      }
       if (leftSiblingNode != null && leftSiblingNode.items.size() > 1) {
          //steal from left sibling via rotation
          stealFromleft(leftSiblingNode, node);
@@ -98,17 +111,17 @@ public class Tree<K extends Comparable, V> {
          if (leftSiblingNode != null) {
             //fuse with left sibling
             int indexToStealFromParent = parentNode.childNodes.indexOf(node) - 1;
-            returnNode = stealFromParent(leftSiblingNode, node, indexToStealFromParent);
+            returnNode = stealFromParent(leftSiblingNode, node, indexToStealFromParent, returnParent);
          } else if (rightSiblingNode != null) {
             //fuse with right sibling
             int indexToStealFromParent = parentNode.childNodes.indexOf(node);
-            returnNode = stealFromParent(node, rightSiblingNode, indexToStealFromParent);
+            returnNode = stealFromParent(node, rightSiblingNode, indexToStealFromParent, returnParent);
          } else {
             throw new Exception("Unknown FixOneKeyNode condition. Attempt to steal from parent failed");
          }
       } else if (node.parent == head) {
          //fuse with parent ie head
-         returnNode = fuseHeadWithBothChildren();
+         returnNode = fuseHeadWithBothChildren(returnParent);
       } else {
          throw new Exception("Unknown FixOneKeyNode condition");
       }
@@ -117,58 +130,51 @@ public class Tree<K extends Comparable, V> {
    }
 
    private void stealFromRight(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode) {
-      boolean isLeafNode=false;
-      if(leftNode.childNodes.size()==0)
-      {
-         isLeafNode=true;
+      boolean isLeafNode = false;
+      if (leftNode.childNodes.size() == 0) {
+         isLeafNode = true;
       }
       TreeNode<K, V> parentNode = leftNode.parent;
-      int indexOfItemFromParentToMove=parentNode.childNodes.indexOf(leftNode);
+      int indexOfItemFromParentToMove = parentNode.childNodes.indexOf(leftNode);
 
       Item<K, V> itemMoveToparent = rightNode.items.remove(0);
       Item<K, V> itemFromParent = parentNode.items.remove(indexOfItemFromParentToMove);
-      parentNode.items.add(indexOfItemFromParentToMove,itemMoveToparent);
-      leftNode.items.add((leftNode.items.size()-1),itemFromParent);
+      parentNode.items.add(indexOfItemFromParentToMove, itemMoveToparent);
+      leftNode.items.add((leftNode.items.size() - 1), itemFromParent);
 
-      if(isLeafNode==false)
-      {
+      if (isLeafNode == false) {
          TreeNode<K, V> leftmostChildOfRightNode = rightNode.childNodes.remove(0);
          leftNode.childNodes.add(leftmostChildOfRightNode);
          leftmostChildOfRightNode.parent = leftNode;
       }
-
    }
 
    private void stealFromleft(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode) {
-      boolean isLeafNode=false;
-      if(leftNode.childNodes.size()==0)
-      {
-         isLeafNode=true;
+      boolean isLeafNode = false;
+      if (leftNode.childNodes.size() == 0) {
+         isLeafNode = true;
       }
 
       TreeNode<K, V> parentNode = rightNode.parent;
-      int indexOfItemFromParentToMove=parentNode.childNodes.indexOf(leftNode);
+      int indexOfItemFromParentToMove = parentNode.childNodes.indexOf(leftNode);
 
       Item<K, V> itemMoveToparent = leftNode.items.remove(leftNode.items.size() - 1);
       Item<K, V> itemFromParent = parentNode.items.remove(indexOfItemFromParentToMove);
-      parentNode.items.add(indexOfItemFromParentToMove,itemMoveToparent);
-      rightNode.items.add(0,itemFromParent);
+      parentNode.items.add(indexOfItemFromParentToMove, itemMoveToparent);
+      rightNode.items.add(0, itemFromParent);
 
-      if(isLeafNode==false)
-      {
+      if (isLeafNode == false) {
          TreeNode<K, V> rightmostChildOfLeftNode = leftNode.childNodes.remove(leftNode.childNodes.size() - 1);
          rightNode.childNodes.add(0, rightmostChildOfLeftNode);
          rightmostChildOfLeftNode.parent = rightNode;
       }
-
    }
 
-   private TreeNode<K, V> stealFromParent(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode, int indexOfItemToBeStolenFromParent) {
+   private TreeNode<K, V> stealFromParent(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode, int indexOfItemToBeStolenFromParent, boolean returnParent) {
 
-      boolean isLeafNode=false;
-      if(leftNode.childNodes.size()==0)
-      {
-         isLeafNode=true;
+      boolean isLeafNode = false;
+      if (leftNode.childNodes.size() == 0) {
+         isLeafNode = true;
       }
 
       TreeNode<K, V> parentNode = leftNode.parent;
@@ -179,20 +185,20 @@ public class Tree<K extends Comparable, V> {
       parentNode.childNodes.remove(rightNode);
       rightNode.parent = null;
 
-
-      if(isLeafNode==false)
-      {
+      if (isLeafNode == false) {
          for (TreeNode<K, V> rightChildNode : rightNode.childNodes) {
             leftNode.childNodes.add(rightChildNode);
             rightChildNode.parent = leftNode;
          }
       }
-
-      return leftNode;
+      if (returnParent) {
+         return parentNode;
+      } else {
+         return leftNode;
+      }
    }
 
-   private TreeNode<K, V> fuseHeadWithBothChildren() throws Exception {
-
+   private TreeNode<K, V> fuseHeadWithBothChildren(boolean returnParent) throws Exception {
 
       if (head.childNodes.size() > 2) {
          throw new Exception("fuseHeadWithBothChildren called erronelosly");
@@ -200,14 +206,21 @@ public class Tree<K extends Comparable, V> {
 
       TreeNode<K, V> leftNode = head.getLeftChildNodeForItem(0);
       TreeNode<K, V> rightNode = head.getRightChildNodeForItem(0);
+      TreeNode<K, V> returnNode;
 
-      boolean isLeafNode=false;
-      if(leftNode.childNodes.size()==0)
+      if(returnParent==false && rightNode.childNodes.size()>0)
       {
-         isLeafNode=true;
+         returnNode=rightNode.childNodes.get(0);
+      }
+      else
+      {
+         returnNode=head;
       }
 
-
+      boolean isLeafNode = false;
+      if (leftNode.childNodes.size() == 0) {
+         isLeafNode = true;
+      }
 
       head.items.add(0, leftNode.items.get(0));
       head.items.add(2, rightNode.items.get(0));
@@ -218,23 +231,20 @@ public class Tree<K extends Comparable, V> {
       head.childNodes.remove(1);
       head.childNodes.remove(0);
 
-
-
-      if(isLeafNode==false)
-      {
+      if (isLeafNode == false) {
          List<TreeNode<K, V>> childrenOfLeft = leftNode.childNodes;
          List<TreeNode<K, V>> childrenOfRight = rightNode.childNodes;
          head.childNodes.addAll(childrenOfLeft);
          head.childNodes.addAll(childrenOfRight);
-
       }
 
-      return head;
+         return returnNode;
+
    }
 
    private TreeNode<K, V> findLeftMostNodeForRemoveOperation(TreeNode<K, V> node) throws Exception {
       if (node.items.size() == 1) {
-         node = FixOneKeyNode(node);
+         node = FixOneKeyNode(node, false);
       }
 
       TreeNode<K, V> leftNode = node.getLeftChildNodeForItem(0);

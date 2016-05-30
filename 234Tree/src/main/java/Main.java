@@ -30,6 +30,7 @@ public class Main {
         tree.insert(new Item<Integer, String>(81,"81"));
         tree.insert(new Item<Integer, String>(60,"60"));
 
+        tree.remove(40);
         tree.remove(62);
 
         tree.printSorted();
