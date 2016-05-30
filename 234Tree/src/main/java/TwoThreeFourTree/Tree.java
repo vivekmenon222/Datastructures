@@ -1,6 +1,7 @@
 package TwoThreeFourTree;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Home on 3/24/2016.
@@ -60,13 +61,13 @@ public class Tree<K extends Comparable, V> {
    private void remove(TreeNode<K, V> node, K key) throws Exception {
 
       if (node != head) {
-         checkForOneKeyNode(node);
+         node=checkForOneKeyNode(node);
       }
 
       Item<K, V> foundItem = findKeyInNode(node, key);
       if (foundItem != null) {
          //Item to be removed found
-         int foundItemIndex = head.items.indexOf(foundItem);
+         int foundItemIndex = node.items.indexOf(foundItem);
          TreeNode<K, V> leftMostNode = findLeftMostNodeForRemoveOperation(head.getRightChildNodeForItem(foundItemIndex));
       } else {
          //Do a recursive search for the item
@@ -75,27 +76,110 @@ public class Tree<K extends Comparable, V> {
       }
    }
 
-   private void checkForOneKeyNode(TreeNode<K, V> node) throws Exception {
+   private TreeNode<K, V>  checkForOneKeyNode(TreeNode<K, V> node) throws Exception {
+      TreeNode<K, V> returnNode=node;
       TreeNode<K, V> leftSiblingNode = node.getLeftAdjacentNode();
       TreeNode<K, V> rightSiblingNode = node.getRightAdjacentNode();
-      if (leftSiblingNode!=null && leftSiblingNode.items.size() > 1) {
-          //steal from left sibling via rotation
-      } else if (rightSiblingNode!=null && rightSiblingNode.items.size() > 1) {
+      TreeNode<K, V> parentNode = node.parent;
+      if (leftSiblingNode != null && leftSiblingNode.items.size() > 1) {
+         //steal from left sibling via rotation
+         stealFromleft(leftSiblingNode, node);
+      } else if (rightSiblingNode != null && rightSiblingNode.items.size() > 1) {
          //steal from right sibling via rotation
-      } else if (node.parent.items.size() > 1) {
+         stealFromRight(node, rightSiblingNode);
+      } else if (parentNode.items.size() > 1) {
          //steal from parent
-      }
-      else if(node.parent==head)
-      {
+         if (leftSiblingNode != null) {
+            //fuse with left sibling
+            int indexToStealFromParent = parentNode.childNodes.indexOf(node) - 1;
+            returnNode=stealFromParent(leftSiblingNode, node, indexToStealFromParent);
+         } else if (rightSiblingNode != null) {
+            //fuse with right sibling
+            int indexToStealFromParent = parentNode.childNodes.indexOf(node);
+            returnNode=stealFromParent(node, rightSiblingNode, indexToStealFromParent);
+         } else {
+            throw new Exception("Unknown checkForOneKeyNode condition. Attempt to steal from parent failed");
+         }
+      } else if (node.parent == head) {
          //fuse with parent ie head
-      }
-      else
-      {
+         returnNode=fuseHeadWithBothChildren();
+
+      } else {
          throw new Exception("Unknown checkForOneKeyNode condition");
       }
+
+      return returnNode;
    }
 
-   private TreeNode<K, V> findLeftMostNodeForRemoveOperation(TreeNode<K, V> node) {
+   private void stealFromRight(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode) {
+      TreeNode<K, V> parentNode = leftNode.parent;
+      TreeNode<K, V> leftmostChildOfRightNode = rightNode.childNodes.remove(0);
+      Item<K, V> itemMoveToparent = rightNode.items.remove(0);
+      Item<K, V> itemFromParent = parentNode.items.remove(parentNode.items.size() - 1);
+      parentNode.items.add(itemMoveToparent);
+      leftNode.items.add(itemFromParent);
+
+      leftNode.childNodes.add(leftmostChildOfRightNode);
+      leftmostChildOfRightNode.parent = leftNode;
+   }
+
+   private void stealFromleft(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode) {
+      TreeNode<K, V> parentNode = rightNode.parent;
+      TreeNode<K, V> rightmostChildOfLeftNode = leftNode.childNodes.remove(leftNode.childNodes.size() - 1);
+      Item<K, V> itemMoveToparent = leftNode.items.remove(leftNode.items.size() - 1);
+      Item<K, V> itemFromParent = parentNode.items.remove(parentNode.items.size() - 1);
+      parentNode.items.add(itemMoveToparent);
+      rightNode.items.add(itemFromParent);
+
+      rightNode.childNodes.add(0, rightmostChildOfLeftNode);
+      rightmostChildOfLeftNode.parent = rightNode;
+   }
+
+   private TreeNode<K, V> stealFromParent(TreeNode<K, V> leftNode, TreeNode<K, V> rightNode, int indexOfItemToBeStolenFromParent) {
+
+      TreeNode<K, V> parentNode = leftNode.parent;
+      leftNode.items.add(parentNode.items.remove(indexOfItemToBeStolenFromParent));
+      //move items from right node to left and get rid of right node
+      leftNode.items.add(rightNode.items.remove(0));
+      for (TreeNode<K, V> rightChildNode : rightNode.childNodes) {
+         leftNode.childNodes.add(rightChildNode);
+         rightChildNode.parent = leftNode;
+      }
+      parentNode.childNodes.remove(rightNode);
+      rightNode.parent = null;
+
+      return leftNode;
+   }
+
+   private TreeNode<K, V> fuseHeadWithBothChildren() throws Exception {
+      if (head.childNodes.size() > 2) {
+         throw new Exception("fuseHeadWithBothChildren called erronelosly");
+      }
+
+      TreeNode<K,V> leftNode=head.getLeftChildNodeForItem(0);
+      TreeNode<K,V> rightNode=head.getRightChildNodeForItem(0);
+      List<TreeNode<K,V>> childrenOfLeft=leftNode.childNodes;
+      List<TreeNode<K,V>> childrenOfRight=rightNode.childNodes;
+
+      head.items.add(0, leftNode.items.get(0));
+      head.items.add(2,rightNode.items.get(0));
+
+      leftNode.parent=null;
+      rightNode.parent=null;
+
+      head.childNodes.remove(1);
+      head.childNodes.remove(0);
+
+
+      head.childNodes.addAll(childrenOfLeft);
+      head.childNodes.addAll(childrenOfRight);
+
+      return head;
+
+   }
+
+   private TreeNode<K, V> findLeftMostNodeForRemoveOperation(TreeNode<K, V> node) throws Exception {
+      node=checkForOneKeyNode(node);
       TreeNode<K, V> leftNode = node.getLeftChildNodeForItem(0);
       if (leftNode != null) {
          return findLeftMostNodeForRemoveOperation(leftNode);
