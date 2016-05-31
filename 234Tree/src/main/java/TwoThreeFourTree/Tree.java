@@ -208,13 +208,10 @@ public class Tree<K extends Comparable, V> {
       TreeNode<K, V> rightNode = head.getRightChildNodeForItem(0);
       TreeNode<K, V> returnNode;
 
-      if(returnParent==false && rightNode.childNodes.size()>0)
-      {
-         returnNode=rightNode.childNodes.get(0);
-      }
-      else
-      {
-         returnNode=head;
+      if (returnParent == false && rightNode.childNodes.size() > 0) {
+         returnNode = rightNode.childNodes.get(0);
+      } else {
+         returnNode = head;
       }
 
       boolean isLeafNode = false;
@@ -238,8 +235,7 @@ public class Tree<K extends Comparable, V> {
          head.childNodes.addAll(childrenOfRight);
       }
 
-         return returnNode;
-
+      return returnNode;
    }
 
    private TreeNode<K, V> findLeftMostNodeForRemoveOperation(TreeNode<K, V> node) throws Exception {
@@ -347,31 +343,24 @@ public class Tree<K extends Comparable, V> {
       parent.childNodes.add(childIndexBeingAdded, rightChild);
    }
 
-   public Item<K, V> search(K key) {
+   public V search(K key) throws Exception {
       TreeNode<K, V> node = head;
 
-      while (true) {
-         int itemNum = 0;
+      while(true)
+      {
+         if(node==null)
+         {
+            return null;
+         }
          for (Item<K, V> item : node.items) {
-            itemNum++;
-
-            if (key.compareTo(item.key) < 0) {
-               node = getLeftChildItem(item);
-               break;
-            } else if (itemNum == 3) {
-               node = getRightChildFromItem(item);
-               break;
+            if (item.key == key) {
+               return item.value;
             }
          }
+         node=getNextNodeInSearch(node,key);
+
       }
-   }
 
-   private TreeNode<K, V> getLeftChildItem(Item<K, V> item) {
-      return null;
-   }
-
-   private TreeNode<K, V> getRightChildFromItem(Item<K, V> item) {
-      return null;
    }
 
    private Item<K, V> findKeyInNode(TreeNode<K, V> node, K key) {

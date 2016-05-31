@@ -27,12 +27,14 @@ public class Main {
         tree.insert(new Item<Integer, String>(62,"62"));
         tree.insert(new Item<Integer, String>(66,"66"));
         tree.insert(new Item<Integer, String>(74,"74"));
-        tree.insert(new Item<Integer, String>(81,"81"));
-        tree.insert(new Item<Integer, String>(60,"60"));
+        tree.insert(new Item<Integer, String>(81, "81"));
+        tree.insert(new Item<Integer, String>(60, "60"));
 
         tree.remove(40);
         tree.remove(62);
 
+        String val=tree.search(20);
+        System.out.println(val);
         tree.printSorted();
     }
 }
