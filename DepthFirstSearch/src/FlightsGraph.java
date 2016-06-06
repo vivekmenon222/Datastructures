@@ -25,9 +25,19 @@ public class FlightsGraph {
         adjacencyList.put(originCity, destinations);
     }
 
-    public void depthFirstSearch(City originCity)
-    {
+    public void depthFirstSearch(City originCity) {
         originCity.visit();
+        List<City> destinations = adjacencyList.get(originCity);
+        if(destinations!=null)
+        {
+            for (City destination : destinations) {
+                if (!(destination.isVisited())) {
+                    depthFirstSearch(destination);
+
+                }
+            }
+        }
+
 
 
     }

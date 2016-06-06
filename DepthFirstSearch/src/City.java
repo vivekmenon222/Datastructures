@@ -42,4 +42,7 @@ public class City {
     }
 
 
+    public boolean isVisited() {
+        return visited;
+    }
 }
