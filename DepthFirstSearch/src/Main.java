@@ -3,12 +3,19 @@ public class Main {
 
     public static void main(String[] args) {
         FlightsGraph paths=new FlightsGraph();
-        paths.addPath(new City("Boston"),new City("Paris"));
-        paths.addPath(new City("Boston"),new City("Chicago"));
-        paths.addPath(new City("Paris"),new City("Mumbai"));
-        paths.addPath(new City("Mumbai"),new City("Beijing"));
-        paths.addPath(new City("Mumbai"),new City("Delhi"));
-        paths.addPath(new City("Delhi"),new City("Boston"));
-        paths.depthFirstSearch(new City("Boston"));
+        City boston=new City("Boston");
+        City paris=new City("Paris");
+        City chicago=new City("Chicago");
+        City mumbai=new City("Mumbai");
+        City delhi=new City("Delhi");
+        City beijing=new City("Beijing");
+
+        paths.addPath(boston,paris);
+        paths.addPath(boston,chicago);
+        paths.addPath(paris,mumbai);
+        paths.addPath(mumbai,beijing);
+        paths.addPath(mumbai,delhi);
+        paths.addPath(delhi,boston);
+        paths.depthFirstSearch(boston);
     }
 }

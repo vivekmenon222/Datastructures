@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.ConsoleHandler;
 
 /**
  * Created by Home on 6/5/2016.
@@ -26,18 +27,16 @@ public class FlightsGraph {
     }
 
     public void depthFirstSearch(City originCity) {
-        originCity.visit();
-        List<City> destinations = adjacencyList.get(originCity);
-        if(destinations!=null)
-        {
-            for (City destination : destinations) {
-                if (!(destination.isVisited())) {
-                    depthFirstSearch(destination);
+            originCity.visit();
+            List<City> destinations = adjacencyList.get(originCity);
+            if (destinations != null) {
+                for (City destination : destinations) {
+                    if (!(destination.isVisited())) {
+                        depthFirstSearch(destination);
 
+                    }
                 }
             }
-        }
-
 
 
     }
