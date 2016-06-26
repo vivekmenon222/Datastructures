@@ -21,7 +21,6 @@ public class Main {
         paths.addPath(paris,mumbai);
         paths.addPath(mumbai,beijing);
         paths.addPath(mumbai,delhi);
-        paths.addPath(delhi,boston);
         paths.breadthFirstSearch(boston);
     }
 }
