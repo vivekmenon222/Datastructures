@@ -19,7 +19,6 @@ public class BackwardBinaryHeap {
 
     private void createBottomUpHeap(int processIndex) {
         while (processIndex <= maxIndex) {
-            System.out.println("process Index:" + processIndex);
             bubbleDown(processIndex, 0);
             processIndex++;
         }

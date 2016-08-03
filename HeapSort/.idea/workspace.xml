@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32608697">
+            <state vertical-scroll-proportion="0.0">
               <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
               <folding />
             </state>
@@ -43,16 +43,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackwardBinaryHeap.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BackwardBinaryHeap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/BackwardBinaryHeap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.55">
+              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding>
-                <element signature="e#1556#1557#0" expanded="true" />
-                <element signature="e#1608#1609#0" expanded="true" />
-                <element signature="e#1658#1659#0" expanded="true" />
-                <element signature="e#1738#1739#0" expanded="true" />
+                <element signature="e#1491#1492#0" expanded="true" />
+                <element signature="e#1543#1544#0" expanded="true" />
+                <element signature="e#1593#1594#0" expanded="true" />
+                <element signature="e#1673#1674#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,8 +76,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/com/company/HeapSort.java" />
-        <option value="$PROJECT_DIR$/src/com/company/BackwardBinaryHeap.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/BackwardBinaryHeap.java" />
       </list>
     </option>
   </component>
@@ -431,12 +431,12 @@
       <option name="number" value="Default" />
       <updated>1470140909798</updated>
       <workItem from="1470140911206" duration="46000" />
-      <workItem from="1470141311261" duration="11015000" />
+      <workItem from="1470141311261" duration="11485000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11061000" />
+    <option name="totallyTimeSpent" value="11531000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="0" width="1940" height="1030" extended-state="0" />
@@ -483,7 +483,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/BackwardBinaryHeap.java</url>
-          <line>45</line>
+          <line>44</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -526,24 +526,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/BackwardBinaryHeap.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-          <folding>
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#1608#1609#0" expanded="true" />
-            <element signature="e#1658#1659#0" expanded="true" />
-            <element signature="e#1738#1739#0" expanded="true" />
-          </folding>
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/BackwardBinaryHeap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32608697">
-          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding />
+        <state vertical-scroll-proportion="0.55">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="e#1491#1492#0" expanded="true" />
+            <element signature="e#1543#1544#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1673#1674#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
