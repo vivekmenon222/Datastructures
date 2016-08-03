@@ -15,30 +15,36 @@ public class BackwardBinaryHeap {
         maxIndex = backwardHeap.length - 1;
         lastInnerChildIndex = getParentIndex(0);
         createBottomUpHeap(lastInnerChildIndex);
-        for (int i : backwardHeap) {
-            System.out.println(i);
-        }
     }
 
     private void createBottomUpHeap(int processIndex) {
         while (processIndex <= maxIndex) {
             System.out.println("process Index:" + processIndex);
-            bubbleDown(processIndex);
+            bubbleDown(processIndex, 0);
             processIndex++;
         }
 
     }
 
-    private void bubbleDown(int index) {
+    private void bubbleDown(int index, int stopIndex) {
         int firstChildIndex = getReversedIndex(2 * getReversedIndex(index));
-        System.out.println("firstChildIndex:" + firstChildIndex);
         int secondChildIndex = getReversedIndex(2 * getReversedIndex(index) + 1);
+        int minChildIndex;
 
-        int minChildIndex = backwardHeap[firstChildIndex] < backwardHeap[secondChildIndex] ? firstChildIndex : secondChildIndex;
+        if (firstChildIndex < stopIndex) {
+            return;
+        }
+
+        if (secondChildIndex < stopIndex) {
+            minChildIndex = firstChildIndex;
+        } else {
+            minChildIndex = backwardHeap[firstChildIndex] < backwardHeap[secondChildIndex] ? firstChildIndex : secondChildIndex;
+        }
+
         if (backwardHeap[index] > backwardHeap[minChildIndex]) {
             swap(index, minChildIndex);
             if (minChildIndex >= lastInnerChildIndex) {
-                bubbleDown(minChildIndex);
+                bubbleDown(minChildIndex, stopIndex);
             }
 
         }
@@ -63,8 +69,18 @@ public class BackwardBinaryHeap {
     }
 
 
-    public int[] getSortedArr() {
-        return sortedArr;
+    public void sort() {
+        for (int i = 0; i <= maxIndex; i++) {
+            removeMin(i);
+        }
+    }
+
+    private void removeMin(int lastUnsortedIndex) {
+        int removedMin = backwardHeap[maxIndex];
+        backwardHeap[maxIndex] = backwardHeap[lastUnsortedIndex];
+        bubbleDown(maxIndex, lastUnsortedIndex);
+        backwardHeap[lastUnsortedIndex] = removedMin;
+
     }
 
 
