@@ -5,7 +5,6 @@ package com.company;
  */
 public class BackwardBinaryHeap {
 
-    private int[] sortedArr;
     private int[] backwardHeap;
     private int maxIndex;
     private int lastInnerChildIndex;
