@@ -8,9 +8,7 @@ public class MergeSort {
 
     public void Sort(LinkedList linkedList) {
         int totalItems = linkedList.getCount();
-        int secondHalfBegin = 1 + (int) (totalItems / 2);
-        sort(1, secondHalfBegin - 1);
-        sort(secondHalfBegin, totalItems);
+        sort(1, totalItems);
     }
 
     private void sort(int leftIndex, int rightIndex) {
@@ -31,6 +29,7 @@ public class MergeSort {
             System.out.println("reached down to single nodes");
             System.out.println(String.format("merge %s and %s", leftIndex, rightIndex));
             System.out.println("--------------");
+
         }
     }
 

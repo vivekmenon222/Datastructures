@@ -16,6 +16,8 @@ public class Main {
         linkedList.insertFront(9);
         linkedList.insertFront(5);
         linkedList.insertFront(22);
+
+
         System.out.println("Before Sort");
 
         for(ListNode listNode:linkedList)
