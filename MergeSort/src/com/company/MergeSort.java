@@ -26,13 +26,9 @@ public class MergeSort {
 
                 if (rightIndex > rightBeginIndex) {
                     split(rightBeginIndex, rightIndex);
-                } else if (rightIndex == rightBeginIndex) {
-                    //down to single node right
-                    merge(leftIndex, leftEndIndex, rightIndex, rightIndex);
                 }
-                System.out.println("-----back track-----");
-                System.out.println("leftBegin:" + leftIndex);
-                System.out.println("rightEnd:" + rightIndex);
+
+                merge(leftIndex, leftEndIndex, rightBeginIndex, rightIndex);
             }
 
         }
@@ -49,12 +45,15 @@ public class MergeSort {
     }
 
     private void merge(int leftBegin, int leftEnd, int rightBegin, int rightEnd) {
-        //left begin and end can be same for 3 items. Account for that
-       /* System.out.println("--------------");
+         System.out.println("--------------");
         System.out.println("Merging lists");
+        System.out.println("--------------");
         System.out.println("leftBegin:" + leftBegin);
+        System.out.println("leftEnd:" + leftEnd);
+        System.out.println(" ");
+        System.out.println("rightBegin:" + rightBegin);
         System.out.println("rightEnd:" + rightEnd);
-        System.out.println("--------------");*/
+        System.out.println("--------------");
     }
 
 }
