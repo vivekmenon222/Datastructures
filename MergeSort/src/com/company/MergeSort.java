@@ -6,42 +6,55 @@ package com.company;
 public class MergeSort {
 
 
-    public void Sort(LinkedList linkedList) {
+    public void Sort(LinkedList linkedList) throws Exception {
         int totalItems = linkedList.getCount();
-        sort(1, totalItems);
+        split(0, totalItems - 1);
     }
 
-    private void sort(int leftIndex, int rightIndex) {
-        if ((rightIndex - leftIndex) > 1) {
-            int totalItems = (rightIndex - leftIndex) + 1;
-            int secondHalfBegin = leftIndex + (int) (totalItems / 2);
-            int leftEnd = secondHalfBegin - 1;
-            if (leftEnd > leftIndex) {
-                //for 3 items this could be 1 item long
-                //don't call sort for that
-                sort(leftIndex, leftEnd);
-            }
+    private void split(int leftIndex, int rightIndex) throws Exception {
 
-            sort(secondHalfBegin, rightIndex);
-            merge(leftIndex, secondHalfBegin - 1, secondHalfBegin, rightIndex);
-        } else {
-            System.out.println("--------------");
-            System.out.println("reached down to single nodes");
-            System.out.println(String.format("merge %s and %s", leftIndex, rightIndex));
-            System.out.println("--------------");
+        if ((rightIndex - leftIndex) >= 1) {
+            if ((rightIndex - leftIndex) == 1) {
+                //down to single nodes
+                merge(leftIndex, leftIndex, rightIndex, rightIndex);
+            } else {
+                int rightBeginIndex = secondHalfBegin(leftIndex, rightIndex);
+                int leftEndIndex = rightBeginIndex - 1;
+                if (leftEndIndex > leftIndex) {
+                    split(leftIndex, leftEndIndex);
+                }
+
+                if (rightIndex > rightBeginIndex) {
+                    split(rightBeginIndex, rightIndex);
+                } else if (rightIndex == rightBeginIndex) {
+                    //down to single node right
+                    merge(leftIndex, leftEndIndex, rightIndex, rightIndex);
+                }
+                System.out.println("-----back track-----");
+                System.out.println("leftBegin:" + leftIndex);
+                System.out.println("rightEnd:" + rightIndex);
+            }
 
         }
     }
 
+    private int secondHalfBegin(int firstIndex, int lastIndex) throws Exception {
+        //We are keeping left array the bigger array.
+        if (lastIndex > 0) {
+            return (int) ((lastIndex - firstIndex) / 2) + firstIndex + 1;
+        } else {
+            throw new Exception("Only one item. Cannot split into two.");
+        }
+
+    }
+
     private void merge(int leftBegin, int leftEnd, int rightBegin, int rightEnd) {
         //left begin and end can be same for 3 items. Account for that
-        System.out.println("--------------");
+       /* System.out.println("--------------");
         System.out.println("Merging lists");
         System.out.println("leftBegin:" + leftBegin);
-        System.out.println("leftEnd:" + leftEnd);
-        System.out.println("rightBegin:" + rightBegin);
         System.out.println("rightEnd:" + rightEnd);
-        System.out.println("--------------");
+        System.out.println("--------------");*/
     }
 
 }

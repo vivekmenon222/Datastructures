@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class LinkedList implements Iterable<ListNode> {
 
     ListNode head;
-    private int count=0;
+    private int count = 0;
 
     public LinkedList() {
         head = new ListNode(0, null);
@@ -16,6 +16,14 @@ public class LinkedList implements Iterable<ListNode> {
         ListNode newNode = new ListNode(item, head.next);
         head.next = newNode;
         count++;
+    }
+
+    public void print()
+    {
+        for(ListNode listNode:this)
+        {
+            System.out.println(listNode.value);
+        }
     }
 
 
