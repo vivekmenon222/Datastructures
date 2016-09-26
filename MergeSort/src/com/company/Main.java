@@ -4,34 +4,27 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-	// write your code here
-        LinkedList linkedList=new LinkedList();
-
-        linkedList.insertFront(7);
-        linkedList.insertFront(6);
-        linkedList.insertFront(8);
-        linkedList.insertFront(19);
-        linkedList.insertFront(2);
-        linkedList.insertFront(15);
-        linkedList.insertFront(9);
-        linkedList.insertFront(5);
-        linkedList.insertFront(22);
-        linkedList.insertFront(9);
-    /*    linkedList.insertFront(2);
-        linkedList.insertFront(6);
-        linkedList.insertFront(8);
-        linkedList.insertFront(4);*/
 
 
-     //   System.out.println("Before Sort");
+        int[] sortMe = new int[]{1, 8, 4, 5, 2, 3, 6, 2, 8, 52, 7};
 
-       // linkedList.print();
-        MergeSort mergeSort=new MergeSort();
 
-        mergeSort.Sort(linkedList);
+        System.out.println("Before Sort");
+        arrayPrint(sortMe);
 
-       // System.out.println("After Sort");
-      //  linkedList.print();
+        MergeSort mergeSort = new MergeSort();
+
+        mergeSort.Sort(sortMe);
+
+        System.out.println("After Sort");
+        arrayPrint(sortMe);
+
+    }
+
+    private static void arrayPrint(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
     }
 
 
