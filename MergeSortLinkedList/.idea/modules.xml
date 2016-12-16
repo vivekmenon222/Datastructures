@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MergeSortLinkedList.iml" filepath="$PROJECT_DIR$/MergeSortLinkedList.iml" />
+    </modules>
+  </component>
+</project>
