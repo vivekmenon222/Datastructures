@@ -64,11 +64,11 @@ public class MyLinkedList implements Iterable<ListNode> {
     }
 
     public void sort() {
-        split(head.next, null);
+        split(head, head.next, null);
 
     }
 
-    private void split(ListNode start, ListNode end) {
+    private void split(ListNode dummyHead, ListNode start, ListNode end) {
         ListNode slow = start;
         ListNode fast = start;
 
@@ -97,19 +97,16 @@ public class MyLinkedList implements Iterable<ListNode> {
         * */
         //recursively split left side
         if (start != slow) {
-            System.out.println("start:" + start.value + " end:" + slow.value);
-            split(start, slow);
+            split(dummyHead, start, slow);
         }
 
 
         //recursively split right side
         if (slow.next != fast) {
-            System.out.println("start:" + slow.next.value + " end:" + fast.value);
-            split(slow.next, fast);
+            split(slow, slow.next, fast);
         }
 
-        System.out.println("Left list for merging:" + start.value + " to " + slow.value);
-        System.out.println("Right list for merging:" + slow.next.value + " to " + fast.value);
+        merge(dummyHead, start,slow, slow.next, fast);
 
     }
 
@@ -124,6 +121,61 @@ public class MyLinkedList implements Iterable<ListNode> {
         }
 
         return end;
+
+    }
+
+    private void merge(ListNode dummyHead, ListNode leftBegin,ListNode LeftEnd, ListNode rightBegin, ListNode rightEnd) {
+        System.out.println("*********************************************");
+        System.out.println("List in:" + this);
+        System.out.println("*********************************************");
+
+        ListNode preLeftPointer = dummyHead;
+        ListNode leftPointer = leftBegin;
+        ListNode rightPointer = rightBegin;
+        while (leftPointer != null && rightPointer != null && leftPointer != LeftEnd.next && rightPointer != rightEnd.next) {
+            if (leftPointer.value <= rightPointer.value) {
+                preLeftPointer = leftPointer;
+                leftPointer = leftPointer.next;
+            } else {
+                ListNode postRightPointer = rightPointer.next;
+                rightPointer.next = leftPointer;
+                preLeftPointer.next = rightPointer;
+                preLeftPointer = preLeftPointer.next;
+                leftPointer.next = postRightPointer;
+                rightPointer = postRightPointer;
+
+                String s = "";
+
+            }
+            System.out.println("--Intermediate Results--");
+
+            System.out.println("dummyHead:" + dummyHead.value);
+            System.out.println("leftBegin:" + leftBegin.value);
+            System.out.println("rightBegin:" + rightBegin.value);
+            System.out.println("rightEnd:" + rightEnd.value);
+
+            System.out.println("leftPointer:" + (leftPointer != null ? leftPointer.value : "null"));
+            System.out.println("rightPointer:" + (rightPointer != null ? rightPointer.value : "null"));
+            System.out.println(" List out:" + this);
+            System.out.println("----------------------------");
+        }
+        System.out.println("--Exit while Results--");
+
+        System.out.println("dummyHead:" + dummyHead.value);
+        System.out.println("leftBegin:" + leftBegin.value);
+        System.out.println("rightBegin:" + rightBegin.value);
+        System.out.println("rightEnd:" + rightEnd.value);
+
+        System.out.println("leftPointer:" + (leftPointer != null ? leftPointer.value : "null"));
+        System.out.println("rightPointer:" + (rightPointer != null ? rightPointer.value : "null"));
+        System.out.println(" List out:" + this);
+        System.out.println("----------------------------");
+        System.out.println("----------------------------");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+
+
 
     }
 }
