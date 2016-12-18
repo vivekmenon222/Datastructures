@@ -74,12 +74,14 @@ public class MyLinkedList implements Iterable<ListNode> {
 
 
         //move slow pointer once and fast pointer twice till you reach the end
+        //if we have odd number of elements and we keep jumping 2 elements we will overshoot the end by one item
+        //thats why need to stop at one before end in the while loop
         while (fast != end && fast.next != end) {
-
             fast = fast.next.next;
             slow = slow.next;//move slow forward only if fast can move 2 steps ahead
 
             if (end == null) {
+                //Will enter here only in the first iteration
                 //This will set the end node when you are at the end or one node behind end
                 end = trySetEndNode(fast);
             }
@@ -89,23 +91,25 @@ public class MyLinkedList implements Iterable<ListNode> {
             fast = fast.next;
         }
 
-        /*You have reached the end,
+        /*You have reached the end of the linkedlist you are iterating thru,
         * the part from start till slow node is the first list (left list)
         * the part after the slow node, till the fast node is the 2nd list (right list)
         * */
-        //split left side
+        //recursively split left side
         if (start != slow) {
             System.out.println("start:" + start.value + " end:" + slow.value);
             split(start, slow);
         }
 
 
-        //split right side
+        //recursively split right side
         if (slow.next != fast) {
             System.out.println("start:" + slow.next.value + " end:" + fast.value);
             split(slow.next, fast);
         }
 
+        System.out.println("Left list for merging:" + start.value + " to " + slow.value);
+        System.out.println("Right list for merging:" + slow.next.value + " to " + fast.value);
 
     }
 
