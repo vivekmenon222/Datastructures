@@ -65,25 +65,22 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     public void sort() {
 
-         mergeAndSort(head.next);
+        mergeAndSort(head.next);
     }
 
-    private void mergeAndSort(ListNode beginNode)
-    {
-        ListNode leftBegin=beginNode;
-        ListNode middle=getMidPoint(beginNode);
-        ListNode rightBegin=middle.next;
-        middle.next=null;
-        if(leftBegin!=null && leftBegin.next!=null)
-        {
+    private void mergeAndSort(ListNode beginNode) {
+        ListNode leftBegin = beginNode;
+        ListNode middle = getMidPoint(beginNode);
+        ListNode rightBegin = middle.next;
+        middle.next = null;
+        if (leftBegin != null && leftBegin.next != null) {
             mergeAndSort(leftBegin);
         }
 
-        if(rightBegin!=null && rightBegin.next!=null)
-        {
+        if (rightBegin != null && rightBegin.next != null) {
             mergeAndSort(rightBegin);
         }
-        mergeOnly(leftBegin,rightBegin);
+        mergeOnly(leftBegin, rightBegin);
 
 
     }
@@ -111,29 +108,33 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     }
 
-    private void mergeOnly(ListNode leftBegin, ListNode rightBegin)
-    {
-        System.out.println("");
-        System.out.println("****Merging Lists*****");
-        System.out.println("Left list:");
+    private void mergeOnly(ListNode leftBegin, ListNode rightBegin) {
+        ListNode leftPointer = leftBegin;
+        ListNode rightPointer = rightBegin;
+        ListNode leftPrev = null;
 
-        ListNode leftPointer=leftBegin;
-        ListNode rightPointer=rightBegin;
-        if(leftPointer!=null)
-        {
-            System.out.print(leftPointer.value+",");
-            leftPointer=leftPointer.next;
+        while (leftPointer != null && rightPointer != null) {
+            if (leftPointer.value < rightPointer.value) {
+                leftPrev = leftPointer;
+                leftPointer = leftPointer.next;
+            } else {
+                ListNode nextRight = rightPointer.next;
+                if (leftPrev != null) {
+                    leftPrev.next = rightPointer;
+                }
+                rightPointer.next = leftPointer;
+                leftPrev=rightPointer;
+                rightPointer = nextRight;
+            }
+
         }
-        System.out.println("");
 
-        System.out.println("Right list:");
         if(rightPointer!=null)
         {
-            System.out.print(rightPointer.value+",");
-            rightPointer=rightPointer.next;
+            leftPrev.next=rightPointer;
+
         }
-        System.out.println("");
-        System.out.println("*******************");
+
 
     }
 
