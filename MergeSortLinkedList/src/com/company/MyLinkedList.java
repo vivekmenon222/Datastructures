@@ -65,22 +65,22 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     public void sort() {
 
-        mergeAndSort(head.next);
+      head.next=  mergeAndSort(head.next);
     }
 
-    private void mergeAndSort(ListNode beginNode) {
+    private ListNode mergeAndSort(ListNode beginNode) {
         ListNode leftBegin = beginNode;
         ListNode middle = getMidPoint(beginNode);
         ListNode rightBegin = middle.next;
         middle.next = null;
         if (leftBegin != null && leftBegin.next != null) {
-            mergeAndSort(leftBegin);
+            leftBegin= mergeAndSort(leftBegin);
         }
 
         if (rightBegin != null && rightBegin.next != null) {
-            mergeAndSort(rightBegin);
+            rightBegin=mergeAndSort(rightBegin);
         }
-        mergeOnly(leftBegin, rightBegin);
+       return mergeOnly(leftBegin,rightBegin);
 
 
     }
@@ -108,33 +108,41 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     }
 
-    private void mergeOnly(ListNode leftBegin, ListNode rightBegin) {
+    private ListNode mergeOnly(ListNode leftBegin, ListNode rightBegin) {
         ListNode leftPointer = leftBegin;
         ListNode rightPointer = rightBegin;
         ListNode leftPrev = null;
+        ListNode firstElement = null;
 
         while (leftPointer != null && rightPointer != null) {
             if (leftPointer.value < rightPointer.value) {
+                if (firstElement == null) {
+                    firstElement = leftPointer;
+                }
                 leftPrev = leftPointer;
                 leftPointer = leftPointer.next;
+
             } else {
+                if (firstElement == null) {
+                    firstElement = rightPointer;
+                }
+
                 ListNode nextRight = rightPointer.next;
                 if (leftPrev != null) {
                     leftPrev.next = rightPointer;
                 }
                 rightPointer.next = leftPointer;
-                leftPrev=rightPointer;
+                leftPrev = rightPointer;
                 rightPointer = nextRight;
             }
 
         }
 
-        if(rightPointer!=null)
-        {
-            leftPrev.next=rightPointer;
+        if (rightPointer != null) {
+            leftPrev.next = rightPointer;
 
         }
-
+        return firstElement;
 
     }
 
