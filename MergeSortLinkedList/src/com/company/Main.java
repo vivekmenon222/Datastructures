@@ -9,11 +9,11 @@ public class Main {
 
 
 
-        myLinkedList.insertFront(12);
-        myLinkedList.insertFront(3);
+       /* myLinkedList.insertFront(12);
+        myLinkedList.insertFront(3);*/
         myLinkedList.insertFront(4);
-        myLinkedList.insertFront(5);
         myLinkedList.insertFront(1);
+        myLinkedList.insertFront(5);
      //   myLinkedList.insertFront(11);
         System.out.println(myLinkedList);
 
