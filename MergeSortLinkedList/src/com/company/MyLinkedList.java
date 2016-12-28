@@ -65,7 +65,7 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     public void sort() {
 
-      head.next=  mergeAndSort(head.next);
+        head.next = mergeAndSort(head.next);
     }
 
     private ListNode mergeAndSort(ListNode beginNode) {
@@ -74,13 +74,13 @@ public class MyLinkedList implements Iterable<ListNode> {
         ListNode rightBegin = middle.next;
         middle.next = null;
         if (leftBegin != null && leftBegin.next != null) {
-            leftBegin= mergeAndSort(leftBegin);
+            leftBegin = mergeAndSort(leftBegin);
         }
 
         if (rightBegin != null && rightBegin.next != null) {
-            rightBegin=mergeAndSort(rightBegin);
+            rightBegin = mergeAndSort(rightBegin);
         }
-       return mergeOnly(leftBegin,rightBegin);
+        return mergeOnly(leftBegin, rightBegin);
 
 
     }
@@ -104,7 +104,6 @@ public class MyLinkedList implements Iterable<ListNode> {
             }
         }
         return leftpointer;
-
 
     }
 
