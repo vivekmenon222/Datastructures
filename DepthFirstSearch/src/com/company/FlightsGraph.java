@@ -1,12 +1,10 @@
+package com.company;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.ConsoleHandler;
 
-/**
- * Created by Home on 6/5/2016.
- */
 public class FlightsGraph {
 
     Map<City, List<City>> adjacencyList;
@@ -26,18 +24,26 @@ public class FlightsGraph {
         adjacencyList.put(originCity, destinations);
     }
 
-    public void depthFirstSearch(City originCity) {
-            originCity.visit();
-            List<City> destinations = adjacencyList.get(originCity);
-            if (destinations != null) {
-                for (City destination : destinations) {
-                    if (!(destination.isVisited())) {
-                        depthFirstSearch(destination);
 
+    public void breadthFirstSearch(City originCity) {
+        originCity.visit(null);
+        LinkedListQueue<City> queue = new LinkedListQueue<City>();
+        queue.addToQueue(originCity);
+        while (queue.isEmpty() == false) {
+            City parent = queue.dequeue();
+            //vist children and enqueue
+            List<City> destinations = adjacencyList.get(parent);
+            if (destinations != null) {
+                for (City child : destinations) {
+                    if (child.isVisited() == false) {
+                        child.visit(parent);
+                        queue.addToQueue(child);
                     }
                 }
             }
 
+
+        }
 
     }
 }

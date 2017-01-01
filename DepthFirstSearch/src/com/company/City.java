@@ -1,3 +1,5 @@
+package com.company;
+
 import java.lang.invoke.ConstantCallSite;
 
 /**
@@ -7,6 +9,8 @@ public class City {
 
     private String name;
     private boolean visited;
+    private int depth;
+    private City parent;
 
     public City(String name) {
         this.name = name.toLowerCase();
@@ -17,10 +21,17 @@ public class City {
         return name;
     }
 
-    public void visit()
-    {
-        this.visited=true;
-        System.out.println(this.name);
+    public void visit(City parent) {
+        this.visited = true;
+        this.parent = parent;
+        if (parent == null) {
+            this.depth = 0;
+        } else {
+            this.depth = this.parent.getDepth() + 1;
+        }
+
+        System.out.println("Visiting:" + this.name);
+        System.out.println("Depth:" + this.depth);
     }
 
     @Override
@@ -31,7 +42,7 @@ public class City {
 
     @Override
     public boolean equals(Object obj) {
-        boolean returnVal=false;
+        boolean returnVal = false;
         if (obj == null || !(obj instanceof City)) {
             returnVal = false;
         } else if (((City) obj).name.equals(this.name)) {
@@ -44,5 +55,21 @@ public class City {
 
     public boolean isVisited() {
         return visited;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
+    public City getParent() {
+        return parent;
+    }
+
+    public void setParent(City parent) {
+        this.parent = parent;
     }
 }

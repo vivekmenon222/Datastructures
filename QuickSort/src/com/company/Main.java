@@ -8,7 +8,7 @@ public class Main {
     private static int measuredComplexity = 0;
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 8, 6, 5, 2, 9, 7, 3, 0, 0, 8, 8, 36, 5, 4};
+        int[] arr = new int[]{1,1,1};
         expectedComplexity = (int) (arr.length * (Math.log(arr.length) / Math.log(2)));
         System.out.println("Before sort");
         printArray(arr);
