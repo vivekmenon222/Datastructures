@@ -32,6 +32,7 @@ public class City {
 
         System.out.println("Visiting:" + this.name);
         System.out.println("Depth:" + this.depth);
+        System.out.println("-----------------");
     }
 
     @Override
