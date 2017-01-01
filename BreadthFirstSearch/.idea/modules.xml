@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BreadthFirstSearch.iml" filepath="$PROJECT_DIR$/.idea/BreadthFirstSearch.iml" />
       <module fileurl="file://$PROJECT_DIR$/DepthFirstSearch.iml" filepath="$PROJECT_DIR$/DepthFirstSearch.iml" />
     </modules>
   </component>
