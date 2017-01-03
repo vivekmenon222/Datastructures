@@ -14,14 +14,14 @@ public class Main {
         Task shoesOn=new Task("Put shoes on");
 
         TaskGraph getDressedForWork=new TaskGraph();
-        getDressedForWork.addTask(sweaterOn,jacketOn);
+        getDressedForWork.addTask(socksOn,shoesOn);
         getDressedForWork.addTask(sweaterOn,watchOn);
         getDressedForWork.addTask(underShirtOn,shirtOn);
         getDressedForWork.addTask(shirtOn,sweaterOn);
-        getDressedForWork.addTask(socksOn,shoesOn);
         getDressedForWork.addTask(pantOn,socksOn);
         getDressedForWork.addTask(underpantOn,pantOn);
-        getDressedForWork.depthFirstSearch();
+        getDressedForWork.addTask(sweaterOn,jacketOn);
+        getDressedForWork.topologicalSortPrint();
 
     }
 }
