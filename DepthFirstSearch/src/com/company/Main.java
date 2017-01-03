@@ -21,6 +21,7 @@ public class Main {
         getDressedForWork.addTask(pantOn,socksOn);
         getDressedForWork.addTask(underpantOn,pantOn);
         getDressedForWork.addTask(sweaterOn,jacketOn);
+       // getDressedForWork.addTask(jacketOn,underShirtOn);//loop. Will trigger back edge if uncommented
         getDressedForWork.topologicalSortPrint();
 
     }

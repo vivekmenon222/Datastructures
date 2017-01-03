@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class TaskGraph {
     private Map<Task, LinkedList<Task>> taskGraph = new HashMap<>();
-    private LinkedList<Task> topologicalSortedTask=new LinkedList<>();
+    private LinkedList<Task> topologicalSortedTask = new LinkedList<>();
 
     public void addTask(Task sourceTask, Task destinationTask) {
         LinkedList<Task> destinations = taskGraph.get(sourceTask);
@@ -20,13 +20,14 @@ public class TaskGraph {
 
     public void topologicalSortPrint() {
         depthFirstSearch();
-        for(Task t:topologicalSortedTask)
-        {
+        System.out.println("----Topological sort----");
+        for (Task t : topologicalSortedTask) {
             System.out.println(t);
         }
     }
 
-    public void depthFirstSearch() {
+    private void depthFirstSearch() {
+
         for (Task sourceTask : taskGraph.keySet()) {
             if (sourceTask.isVisited() == false) {
                 depthFirstSearchVisit(sourceTask);
@@ -36,24 +37,29 @@ public class TaskGraph {
     }
 
     private void depthFirstSearchVisit(Task sourceTask) {
-       // System.out.println("Visiting:" + sourceTask);
-        sourceTask.setDiscoveryTime(getCurentDate());
+        System.out.println("Visiting:" + sourceTask);
+
+        sourceTask.setInProcess(true);
         sourceTask.setVisited(true);
         LinkedList<Task> destinations = taskGraph.get(sourceTask);
         if (destinations != null) {
             for (Task destination : destinations) {
+                if (destination.isInProcess()) {
+                    System.out.println("back edge from " + sourceTask + " to " + destination);
+                }
                 if (destination.isVisited() == false) {
                     destination.setParent(sourceTask);
+
                     depthFirstSearchVisit(destination);
                 }
             }
         }
-        sourceTask.setFinishTime(getCurentDate());
+
+        sourceTask.setInProcess(false);
         topologicalSortedTask.addFirst(sourceTask);
     }
 
-    private Date getCurentDate()
-    {
+    private Date getCurentDate() {
         return new Date();
     }
 

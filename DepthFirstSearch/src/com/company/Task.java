@@ -6,11 +6,10 @@ import java.util.Date;
  * Created by Home on 1/2/2017.
  */
 public class Task {
-    private  String taskName;
+    private String taskName;
     private Task Parent;
-    private Date discoveryTime;
-    private Date finishTime;
     private boolean visited;
+    private boolean inProcess;
 
     public Task(String taskName) {
         this.taskName = taskName;
@@ -32,21 +31,6 @@ public class Task {
         Parent = parent;
     }
 
-    public Date getDiscoveryTime() {
-        return discoveryTime;
-    }
-
-    public void setDiscoveryTime(Date discoveryTime) {
-        this.discoveryTime = discoveryTime;
-    }
-
-    public Date getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(Date finishTime) {
-        this.finishTime = finishTime;
-    }
 
     @Override
     public String toString() {
@@ -62,4 +46,11 @@ public class Task {
     }
 
 
+    public boolean isInProcess() {
+        return inProcess;
+    }
+
+    public void setInProcess(boolean inProcess) {
+        this.inProcess = inProcess;
+    }
 }
