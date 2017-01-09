@@ -1,90 +1,64 @@
 package com.company;
 
 /**
- * Created by menonv on 6/26/2016.
- */
-
-import java.lang.invoke.ConstantCallSite;
-
-/**
- * Created by Home on 6/5/2016.
+ * Created by Home on 1/3/2017.
  */
 public class City {
+    private String name;
+    private City parent;
+    private boolean isVisited;
 
-   private String name;
-   private boolean visited;
-   private City parent;
-   private int depth;
+    public City(String name) {
+        this.name=name;
+    }
 
-   public City(String name) {
-      this.name = name.toLowerCase();
-   }
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 
-   public String getName() {
-      return name;
-   }
 
-   public void visit(City parent, boolean doPrint) {
-      this.visited = true;
-      if (parent != null) {
-         this.parent = parent;
-         this.depth = parent.depth + 1;
-      } else {
-         this.depth = 0;
-      }
-      if (doPrint) {
-         print();
-      }
-   }
+    @Override
+    public boolean equals(Object thatObj) {
+        //If the city has the same name name then its the same city
+        boolean isEqual = false;
+        if ((thatObj == null) || !(thatObj instanceof City)) {
+            isEqual = false;
+        } else if (((City) thatObj).getName().equals(this.getName())) {
+            isEqual = true;
+        }
+        return isEqual;
 
-   private void print() {
-      if (this.parent != null) {
-         System.out.println("Parent: " + this.parent.name);
-      }
-      System.out.println("Airport:" + this.name);
+    }
 
-      System.out.println("Depth: " + this.depth);
-      System.out.println("----------------");
-   }
+    @Override
+    public String toString() {
+        return this.name;
+    }
 
-   @Override
-   public int hashCode() {
-      return name.hashCode();
-   }
+    public String getName() {
+        return name;
+    }
 
-   @Override
-   public boolean equals(Object obj) {
-      boolean returnVal = false;
-      if (obj == null || !(obj instanceof City)) {
-         returnVal = false;
-      } else if (((City) obj).name.equals(this.name)) {
-         returnVal = true;
-      }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-      return returnVal;
-   }
+    public City getParent() {
+        return parent;
+    }
 
-   public boolean isVisited() {
-      return visited;
-   }
+    public boolean isVisited() {
+        return isVisited;
+    }
 
-   public City getParent() {
-      return parent;
-   }
+    public void setVisited(boolean visited) {
+       this.isVisited=visited;
+    }
 
-   public void setParent(City parent) {
-      this.parent = parent;
-   }
-
-   public int getDepth() {
-      return depth;
-   }
-
-   public void setDepth(int depth) {
-      this.depth = depth;
-   }
-
-   public void resetVisited() {
-      visited = false;
-   }
+    public void visit(City parent)
+    {
+        this.parent = parent;
+        this.isVisited=true;
+    }
 }
