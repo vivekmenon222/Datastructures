@@ -8,7 +8,7 @@ public class Main {
     private static int measuredComplexity = 0;
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1,1,1};
+        int[] arr = new int[]{5,2,2,1,5,8,0,4,9,6,1,0,85,12,34,36};
         expectedComplexity = (int) (arr.length * (Math.log(arr.length) / Math.log(2)));
         System.out.println("Before sort");
         printArray(arr);
@@ -25,7 +25,7 @@ public class Main {
         }
 
         Random rand = new Random();
-        int pivotIndex = rand.nextInt(endIndex - beginIndex) + beginIndex;
+        int pivotIndex = rand.nextInt(endIndex +1 - beginIndex) + beginIndex;
         int pivotElement = array[pivotIndex];
         swap(pivotIndex, endIndex, array);
         int i = beginIndex;
@@ -37,14 +37,14 @@ public class Main {
                 i++;
             }
 
-            while (array[j] > pivotElement && j > 0 && j >= i) {
+            while (array[j] > pivotElement && j > beginIndex && j >= i) {
                 measuredComplexity++;
                 j--;
             }
 
             if (j > i) {
                 swap(i, j, array);
-            } else if (j < i || j == 0) {
+            } else if (j < i || j == beginIndex) {
                 swap(i, endIndex, array);
                 break;
             }
