@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class MyLinkedList implements Iterable<ListNode> {
 
@@ -65,22 +64,24 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     public void sort() {
 
-        head.next = mergeAndSort(head.next);
+        head.next = split(head.next);
     }
 
-    private ListNode mergeAndSort(ListNode beginNode) {
+    private ListNode split(ListNode beginNode) {
         ListNode leftBegin = beginNode;
         ListNode middle = getMidPoint(beginNode);
         ListNode rightBegin = middle.next;
-        middle.next = null;
+        middle.next = null;//this step is critical.
         if (leftBegin != null && leftBegin.next != null) {
-            leftBegin = mergeAndSort(leftBegin);
+            //splitting stops when we have just one node
+            leftBegin = split(leftBegin);
         }
 
         if (rightBegin != null && rightBegin.next != null) {
-            rightBegin = mergeAndSort(rightBegin);
+            //splitting stops when we have just one node
+            rightBegin = split(rightBegin);
         }
-        return mergeOnly(leftBegin, rightBegin);
+        return merge(leftBegin, rightBegin);
 
 
     }
@@ -107,7 +108,7 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     }
 
-    private ListNode mergeOnly(ListNode leftBegin, ListNode rightBegin) {
+    private ListNode merge(ListNode leftBegin, ListNode rightBegin) {
         ListNode leftPointer = leftBegin;
         ListNode rightPointer = rightBegin;
         ListNode leftPrev = null;
