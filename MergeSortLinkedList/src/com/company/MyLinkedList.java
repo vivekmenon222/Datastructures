@@ -64,22 +64,22 @@ public class MyLinkedList implements Iterable<ListNode> {
 
     public void sort() {
 
-        head.next = split(head.next);
+        head.next = splitAndMerge(head.next);
     }
 
-    private ListNode split(ListNode beginNode) {
+    private ListNode splitAndMerge(ListNode beginNode) {
         ListNode leftBegin = beginNode;
         ListNode middle = getMidPoint(beginNode);
         ListNode rightBegin = middle.next;
         middle.next = null;//this step is critical.
         if (leftBegin != null && leftBegin.next != null) {
             //splitting stops when we have just one node
-            leftBegin = split(leftBegin);
+            leftBegin = splitAndMerge(leftBegin);
         }
 
         if (rightBegin != null && rightBegin.next != null) {
             //splitting stops when we have just one node
-            rightBegin = split(rightBegin);
+            rightBegin = splitAndMerge(rightBegin);
         }
         return merge(leftBegin, rightBegin);
 
