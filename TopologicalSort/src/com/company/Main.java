@@ -18,9 +18,11 @@ public class Main {
         Task watch=new Task(UUID.randomUUID(),"watch");
 
         shoes.addDependency(socks);
-        pants.addDependency(underwear); 
+        pants.addDependency(underwear);
         shoes.addDependency(pants);
         jacket.addDependency(shirt);
+        jacket.addDependency(pants);
+        watch.addDependency(shirt);
 
         TopologicalSorter sorter=new TopologicalSorter();
         sorter.addTaskToSort(socks);
