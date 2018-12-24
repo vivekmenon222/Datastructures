@@ -1,34 +1,32 @@
 package com.company;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
 
-        City A = new City("A");
-        City B = new City("B");
-        City C = new City("C");
-        City D = new City("D");
-        City E = new City("E");
-        City F = new City("F");
-        City G = new City("G");
+        //Declare the nodes
+        Node nodeA = new Node("A");
+        Node nodeB = new Node("B");
+        Node nodeC = new Node("C");
+        Node nodeD = new Node("D");
+        Node nodeE = new Node("E");
+        Node nodeF = new Node("F");
+        Node nodeG = new Node("G");
 
-        Set<Edge> edges = new HashSet<Edge>();
-        edges.add(new Edge(A, B, 10));
-        edges.add(new Edge(B, C, 5));
-        edges.add(new Edge(C, E, 5));
-        edges.add(new Edge(E, F, 1));
-        edges.add(new Edge(E, D, 2));
-        edges.add(new Edge(F, G, 10));
-        edges.add(new Edge(B, D, 13));
-        edges.add(new Edge(D, G, 1));
+        PathFinder pf = new PathFinder();
 
-        Dijkstra dijkstra=new Dijkstra(edges);
-        dijkstra.findShortestPathFrom(A);
-        dijkstra.printShortestPathTo(G);
+        //Add all the paths
+        pf.addPath(nodeA, nodeB, 10);
+        pf.addPath(nodeB, nodeC, 5);
+        pf.addPath(nodeB, nodeD, 13);
+        pf.addPath(nodeC, nodeE, 5);
+        pf.addPath(nodeD, nodeG, 1);
+        pf.addPath(nodeE, nodeD, 2);
+        pf.addPath(nodeE, nodeF, 1);
+        pf.addPath(nodeF, nodeG, 10);
 
+        //Get the distance from source
+        int dist = pf.findDistance(nodeA, nodeG);
+        System.out.println("Distance from source:" + dist);
     }
 }

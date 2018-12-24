@@ -1,65 +1,42 @@
 package com.company;
 
+/**
+ * Created by Home on 12/23/2018.
+ */
+public class Edge {
+    public Node start;
+    public Node end;
+    public int weight;
 
-public class Edge implements Comparable<Edge> {
-    private City originCity;
-    private City destCity;
-    private int weight;
-
-    public Edge(City originCity, City destCity, int weight) {
-        this.originCity = originCity;
-        this.destCity = destCity;
+    public Edge(Node start, Node end, int weight) {
+        this.start = start;
+        this.end = end;
         this.weight = weight;
     }
 
     @Override
-    public int compareTo(Edge that) {
-        return Integer.compare(this.weight, that.weight);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    }
+        Edge that = (Edge) o;
 
-    public City getOriginCity() {
-        return originCity;
-    }
+        if (this.start.equals(that.start) && this.end.equals(that.end)) {
+            return true;
+        } else {
+            return false;
+        }
 
-    public City getDestCity() {
-        return destCity;
-    }
-
-    public int getWeight() {
-        return weight;
     }
 
     @Override
     public int hashCode() {
-        int result = originCity.hashCode()*10 + destCity.hashCode() + weight;
+        int result = start.hashCode();
+        result = 31 * result + end.hashCode();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Edge{" +
-                "originCity=" + originCity +
-                ", destCity=" + destCity +
-                ", weight=" + weight +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object thatEdgeObj) {
-        boolean isEqual;
-        if (!(thatEdgeObj instanceof Edge)) {
-            isEqual = false;
-        } else {
-            Edge thatEdge = (Edge) thatEdgeObj;
-            if (this.getOriginCity().equals(thatEdge.getOriginCity()) && this.getDestCity().equals(thatEdge.getDestCity())) {
-                isEqual = true;
-            } else {
-                isEqual = false;
-            }
-        }
-        return isEqual;
-    }
 
 
 }
