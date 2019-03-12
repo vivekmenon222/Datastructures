@@ -8,5 +8,7 @@ public class Main {
         //other patterns abcababcabcab
         int idx= mchr.findPattern("abcxabcdabxabcdabcdabcdabcy","abcdabcy");
         System.out.println(idx);
+        int idx2= mchr.findPattern("abcxabcdabxabcdabcdabcdabcy","");
+        System.out.println(idx2);
     }
 }

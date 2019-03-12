@@ -7,6 +7,11 @@ public class KmpMatcher {
 
     public int findPattern(String text, String pattern)
     {
+        if(pattern==null || pattern.length()==0)
+        {
+            return 0;
+        }
+
         int[] positions=new int[pattern.length()];
         generatePrefixTable(pattern,positions);
 
